@@ -5,6 +5,7 @@ import {
   OnInit,
 } from '@angular/core';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { SubscriptionDataService } from '../../data-services/subscriptions.data-service';
 import { Subscription } from '../../models/subscription.model';
 
@@ -21,6 +22,12 @@ export class SubscriptionListComponent {
   @Input() selectedId?: number;
 
   constructor(private subscriptionDataService: SubscriptionDataService) {
-    console.log('selectedIdFromUser...', this.selectedId);
+   
+    this._subscriptions$ = this._subscriptions$.pipe(
+      map((user) => {
+        console.log('user', user);
+        return user;
+      })
+    );
   }
 }
