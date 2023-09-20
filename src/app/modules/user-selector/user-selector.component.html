@@ -1,0 +1,14 @@
+<div class="user-selector__container">
+  <h2>User selector</h2>
+  <label class="user-selector__label" for="userSelector"> Choose User </label>
+  <select
+    id="userSelector"
+    class="user-selector__select"
+    [(ngModel)]="selectedId"
+    (change)="getId()"
+  >
+    <option *ngFor="let user of _users$ | async" [value]="user.id">
+      {{ user.name }}, {{ user.age }}
+    </option>
+  </select>
+</div>

@@ -1,0 +1,19 @@
+.subscription-list__table {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+.subscription-list__table > thead {
+  font-weight: 600;
+  text-align: center;
+  background: lightseagreen;
+}
+
+.subscription-list__table tbody > tr > td {
+  padding: 8px 16px;
+}
+
+.subscription-list__container {
+  padding: 16px;
+
+}

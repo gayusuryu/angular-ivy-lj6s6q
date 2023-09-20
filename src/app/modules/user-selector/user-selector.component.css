@@ -1,0 +1,14 @@
+.user-selector__label {
+  display: block;
+}
+
+.user-selector__select {
+  display: block;
+  margin-bottom: 32px;
+}
+
+.user-selector__container {
+  border-radius: 8px;
+  padding: 16px;
+  background: lightgray;
+}
