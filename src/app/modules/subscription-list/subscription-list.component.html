@@ -1,24 +1,22 @@
 <div class="subscription-list__container">
-  <h2>
-    Subscription List
-  </h2>
+  <h2>Subscription List</h2>
 
   <table class="subscription-list__table">
-  <thead>
-    <tr>
-      <td>Id: </td>
-      <td>Name: </td>
-      <td>User Id: </td>
-      <td>Price: </td>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let subscription of _subscriptions$ | async">
-      <td>{{subscription.id}}</td>
-      <td>{{subscription.name}}</td>
-      <td>{{subscription.userId}}</td>
-      <td>{{subscription.price | number:''}}</td>
-    </tr>
-  </tbody>
-</table>
+    <thead>
+      <tr>
+        <td>Id:</td>
+        <td>Name:</td>
+        <td>User Id:</td>
+        <td>Price:</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let subscription of _subscriptions$ | async">
+        <td>{{ subscription.id }}</td>
+        <td>{{ subscription.name }}</td>
+        <td>{{ subscription.userId }}</td>
+        <td>{{ subscription.price | number: '1.2-2' }}</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
