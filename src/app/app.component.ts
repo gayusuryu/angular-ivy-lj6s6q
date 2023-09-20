@@ -7,7 +7,6 @@ import { Component, Input, VERSION } from '@angular/core';
 })
 export class AppComponent {
   selectedIdFromUser?: number;
-  // @Input() selectedIdFromUser?: number;
 
   onSelectedId(id) {
     this.selectedIdFromUser = id;

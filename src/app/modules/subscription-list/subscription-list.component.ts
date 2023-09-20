@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  OnInit,
+} from '@angular/core';
 import { Observable } from 'rxjs';
 import { SubscriptionDataService } from '../../data-services/subscriptions.data-service';
 import { Subscription } from '../../models/subscription.model';
@@ -7,14 +12,15 @@ import { Subscription } from '../../models/subscription.model';
   selector: 'subscription-list',
   templateUrl: './subscription-list.component.html',
   styleUrls: ['./subscription-list.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SubscriptionListComponent {
-  _subscriptions$: Observable<
-    Subscription[]
-  > = this.subscriptionDataService.getSubscriptions();
+  _subscriptions$: Observable<Subscription[]> =
+    this.subscriptionDataService.getSubscriptions();
+
+  @Input() selectedId?: number;
 
   constructor(private subscriptionDataService: SubscriptionDataService) {
-      // this._subscriptions$ = 
+    console.log('selectedIdFromUser...', this.selectedId);
   }
 }
