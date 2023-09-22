@@ -11,7 +11,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let subscription of _subscriptions$ | async">
+      <tr *ngFor="let subscription of subscription">
         <td>{{ subscription.id }}</td>
         <td>{{ subscription.name }}</td>
         <td>{{ subscription.userId }}</td>
