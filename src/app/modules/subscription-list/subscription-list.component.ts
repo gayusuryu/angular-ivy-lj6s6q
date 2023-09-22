@@ -1,5 +1,6 @@
 import {
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   Input,
   OnChanges,
@@ -28,28 +29,35 @@ export class SubscriptionListComponent implements OnChanges {
 
   @Input() selectedId?: any;
 
-  constructor(private subscriptionDataService: SubscriptionDataService) {}
+  constructor(
+    private subscriptionDataService: SubscriptionDataService
+  ) // private cdr: ChangeDetectorRef
+  {}
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log(this.selectedId);
+    console.log(changes);
     console.log('change', changes.selectedId.currentValue);
 
-    // this._subscriptions$ = this.selectedId.
-    this._subscriptions$ = this._subscriptions$.pipe(
-      map((user) => {
-        console.log('user1', user);
-        return user;
-      })
-    );
+    // this._subscriptions$ = changes.selectedId.currentValue.tap(
+    //   debounceTime(100),
+    //   distinctUntilChanged(),
+    //   this._subscriptions$.pipe(
+    //     switchMap((subscription) =>
+    //       subscription.filter((val) => val.id === this.selectedId)
+    //     )
+    //   )
+    // );
 
-    this._subscriptions$ = changes.selectedId.currentValue.tap(
-      debounceTime(100),
-      distinctUntilChanged(),
-      this._subscriptions$.pipe(
-        switchMap((subscription) =>
-          subscription.filter((val) => val.id === this.selectedId)
-        )
+    this._subscriptions$ = this._subscriptions$.pipe(
+      map((subs) =>
+        subs.filter((val) => val.userId === changes.selectedId.currentValue)
       )
     );
+
+    // this.cdr.detectChanges();
+
+    // subscription.subscribe((data) => {
+    //   console.log('dataa', data);
+    // });
   }
 }
